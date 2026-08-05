@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* =========================================
+   1. GLOBAL LAYOUT
+   ========================================= */
+.app-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fafafa; 
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. NAVBAR & MEGA MENU
+   ========================================= */
+.store-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa; 
+  color: #333;
+  padding: 15px 40px;
+  position: relative; 
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-left h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+}
+
+.store-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-item-container {
+  position: static; 
+  padding: 10px 0;
+}
+
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 1rem;
+  cursor: pointer;
+  padding-bottom: 5px;
+  transition: color 0.2s;
+}
+
+.nav-link-btn:hover, .nav-link-btn.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.mega-menu {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%; 
+  background-color: #fdfdfd;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+  border-top: 1px solid #eaeaea;
+  z-index: 2000;
+  animation: slideDown 0.2s ease-out;
+}
+
+.mega-menu-content {
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.sub-link-btn {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sub-link-btn:hover {
+  color: #000;
+  text-decoration: underline; 
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   3. RIGHT NAVBAR UTILITIES (Search/Sort)
+   ========================================= */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 30px;
+  padding: 5px;
+  transition: all 0.3s;
+}
+
+.search-container.expanded {
+  background-color: #eee; 
+}
+
+.hidden-search-input {
+  width: 0;
+  opacity: 0;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 0.95rem;
+  padding: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.search-container.expanded .hidden-search-input {
+  width: 150px;
+  opacity: 1;
+  padding: 0 10px;
+  pointer-events: auto;
+}
+
+.hidden-search-input:focus { outline: none; }
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: transparent;
+  text-shadow: 0 0 0 #333; 
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover { transform: scale(1.1); }
+
+.mini-sort {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* =========================================
+   4. PRODUCT GRID
+   ========================================= */
+.catalog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background-color: #f0f0f0; 
+}
+
+.category-label {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #666;
+  margin-top: 50px;
+}
+
+/* =========================================
+   5. ACCOUNT DROPDOWN
+   ========================================= */
+.account-container {
+  position: relative;
+}
+
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 15px;
+  width: 200px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown p {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.profile-dropdown hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 0 0 10px 0;
+  width: 100%;
+}
+
+.profile-link {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 5px;
+  cursor: pointer;
+  color: #555;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.profile-link:hover {
+  color: #000;
+}
+
+.logout-btn {
+  color: #d9534f;
+  margin-top: 5px;
+}
+
+.logout-btn:hover {
+  color: #c9302c;
+  text-decoration: underline;
+}
+
+/* =========================================
+   6. AUTHENTICATION MODAL (POP-UP)
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.auth-modal {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.close-modal-btn:hover {
+  color: #333;
+}
+
+.auth-modal h2 {
+  font-family: 'Pacifico', cursive;
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.auth-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box; 
+}
+
+.auth-input:focus {
+  border-color: #333;
+}
+
+.auth-submit-btn {
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+  background-color: #000;
+}
+
+.auth-switch {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-switch span {
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-switch span:hover {
+  text-decoration: underline;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
