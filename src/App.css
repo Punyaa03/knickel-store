@@ -155,17 +155,23 @@
 
 .hidden-search-input:focus { outline: none; }
 
+/* Update Section 3: Icon Button styles */
 .icon-btn {
   background: none;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  color: transparent;
-  text-shadow: 0 0 0 #333; 
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
   transition: transform 0.2s;
 }
 
-.icon-btn:hover { transform: scale(1.1); }
+.icon-btn:hover {
+  transform: scale(1.1);
+}
 
 .mini-sort {
   background-color: transparent;
@@ -412,4 +418,386 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+/* =========================================
+   7. CART SLIDE-OUT DRAWER
+   ========================================= */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  animation: slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-cart-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.close-cart-btn:hover {
+  color: #000;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.empty-cart {
+  margin: auto;
+  text-align: center;
+  color: #888;
+}
+
+.empty-cart span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.cart-item-price {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.cart-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-btn {
+  background-color: #f0f0f0;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.qty-count {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 16px;
+  text-align: center;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.remove-item-btn:hover {
+  color: #d9534f;
+}
+
+.cart-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #eaeaea;
+  background-color: #fafafa;
+}
+
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 14px;
+  border: none;
+}
+/* =========================================
+   8. CHECKOUT MODAL & CONFIRMATION
+   ========================================= */
+.checkout-modal {
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+}
+
+.checkout-modal h2 {
+  font-size: 1.5rem;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.checkout-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.checkout-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.checkout-summary-box {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.checkout-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.checkout-summary-row.total {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+  margin-bottom: 0;
+}
+
+.payment-options {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.payment-option-card {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.payment-option-card.selected {
+  border-color: #000;
+  background-color: #f5f5f5;
+}
+
+.order-success-view {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.success-badge {
+  width: 60px;
+  height: 60px;
+  background-color: #e6f4ea;
+  color: #1e8e3e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+}
+
+.order-id-tag {
+  background-color: #f1f3f4;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 10px 0 20px 0;
+}
+/* Update Section 8: Checkout validation styles */
+.phone-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.country-code-select {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px 10px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.country-code-select:focus {
+  border-color: #333;
+}
+
+.validation-error {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin-top: -6px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+/* =========================================
+   9. AUTH EXTENSIONS (Forgot Password & Messages)
+   ========================================= */
+.auth-forgot-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: right;
+  margin-top: -5px;
+}
+
+.auth-forgot-btn:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.auth-success-msg {
+  color: #2e7d32;
+  background-color: #edf7ed;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.auth-error-msg {
+  color: #d32f2f;
+  background-color: #fdeded;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+/* =========================================
+   10. PASSWORD TOGGLE EYE ICON
+   ========================================= */
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.password-toggle-btn:hover {
+  color: #000;
 }
