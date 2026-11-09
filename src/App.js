@@ -3707,9 +3707,7 @@ function App() {
             >
               <div className="faq-question">
                 <span>{faq.question}</span>
-                <span className="faq-chevron">
-                  {openFaq === index ? '▲' : '▼'}
-                </span>
+                
               </div>
               {openFaq === index && (
                 <div className="faq-answer">

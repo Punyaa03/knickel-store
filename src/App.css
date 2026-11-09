@@ -2164,12 +2164,13 @@ input:checked + .slider:before {
   background: #fff;
   width: 95%;
   max-width: 950px;
-  max-height: 90vh;
+  max-height: 80vh; 
   border-radius: 12px;
   padding: 30px;
   position: relative;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 80px; 
 }
 
 .admin-tab-nav {
@@ -2466,10 +2467,24 @@ input:checked + .slider:before {
    19. FAQ SECTION
    ========================================== */
 .faq-section {
-  max-width: 1240px;
-  margin: 60px auto 40px auto;
-  padding: 0 32px;
-  font-family: inherit;
+  /* 1. Make it screen-wide by breaking out of parent constraints */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  /* 2. Align everything inside to the left */
+  text-align: left;
+  
+  /* 3. Ensure no flex-centering overrides the layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Forces child elements to the left */
+  
+  /* Optional: Add padding so text doesn't touch the absolute screen edge */
+  padding: 2rem 5vw; 
   box-sizing: border-box;
 }
 
